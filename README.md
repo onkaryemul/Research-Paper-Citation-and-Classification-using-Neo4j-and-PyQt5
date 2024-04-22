@@ -57,14 +57,14 @@ This project is a Python-based desktop application designed to search and analyz
     ```
    
 4. **Set up the Neo4j database with the following commands:**
-   **Load data for research paper:**
-   a. **Load the nodes:**
+   - **Load data for research paper:**
+   - a. **Load the nodes:**
 
       ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_content.csv' AS line FIELDTERMINATOR ',' CREATE (:Paper {id: line.paper_id, class: line.label})
       ```
 
-   b. **Load the relationships:**
+   - b. **Load the relationships:**
 
       ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_cites.csv' AS line FIELDTERMINATOR ',' MATCH (citing_paper:Paper {id: line.citing_paper_id}),(cited_paper:Paper {id: line.cited_paper_id}) CREATE (citing_paper)-[:CITES]->(cited_paper)
@@ -82,7 +82,8 @@ This project is a Python-based desktop application designed to search and analyz
     ```
     
     Replace `your_username` with your Neo4j database username, `your_password` with your database password, and 7687 with the port on which your Neo4j database has the Bolt protocol enabled.
-    Additionally, make sure to specify the port on which Bolt is enabled for your Neo4j database. For assistance on finding the Bolt port, please refer to the Neo4j documentation or check your Neo4j configuration settings.
+    - **Additionally, make sure to specify the port on which Bolt is enabled for your Neo4j database.**
+    - For assistance on finding the Bolt port, please refer to the Neo4j documentation or check your Neo4j configuration settings.
    
 2. **Run the application:**
 
