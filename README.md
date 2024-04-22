@@ -5,9 +5,9 @@ A Python desktop application utilizing Neo4j for database management and PyQt5 f
 
 This project is a Python-based desktop application designed to search and analyze a research papers database stored in a Neo4j graph database. It allows users to perform queries such as checking if one paper cites another directly or indirectly, and displaying the full classification of a paper. The application provides a user-friendly interface to interact with the database and retrieve relevant information efficiently.
 
-**Research Paper Citation and Classification:** The core functionality of the project revolves around searching and analyzing research papers. This involves checking if one paper cites another directly or indirectly, as well as displaying the classification of a paper.
-**Neo4j:** Neo4j serves as the database management system for storing and querying research paper data. Its graph-based structure is well-suited for representing relationships between papers, such as citations and classifications.
-**PyQt5:** PyQt5 is used to develop the graphical user interface (GUI) for the application. It provides a set of Python bindings for the Qt framework, allowing for the creation of cross-platform desktop applications with rich UI features.
+- **Research Paper Citation and Classification:** The core functionality of the project revolves around searching and analyzing research papers. This involves checking if one paper cites another directly or indirectly, as well as displaying the classification of a paper.
+- **Neo4j:** Neo4j serves as the database management system for storing and querying research paper data. Its graph-based structure is well-suited for representing relationships between papers, such as citations and classifications.
+- **PyQt5:** PyQt5 is used to develop the graphical user interface (GUI) for the application. It provides a set of Python bindings for the Qt framework, allowing for the creation of cross-platform desktop applications with rich UI features.
 
 
 ## Table of Contents
