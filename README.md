@@ -75,7 +75,7 @@ This project is a Python-based desktop application designed to search and analyz
       ```sql
          LOAD CSV WITH HEADERS FROM 'file:///cora_content.csv' AS line FIELDTERMINATOR ',' CREATE (:Paper {id: line.paper_id, class: line.label})
       ```
-                   OR
+     OR
       ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_content.csv' AS line FIELDTERMINATOR ',' CREATE (:Paper {id: line.paper_id, class: line.label})
       ```
@@ -85,7 +85,7 @@ This project is a Python-based desktop application designed to search and analyz
       ```sql
          LOAD CSV WITH HEADERS FROM 'file:///cora_cites.csv' AS line FIELDTERMINATOR ','  MATCH (citing_paper:Paper {id: line.citing_paper_id}), (cited_paper:Paper {id: line.cited_paper_id}) CREATE (citing_paper)-[:CITES]->(cited_paper)
       ```
-                  OR     
+     OR     
       ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_cites.csv' AS line FIELDTERMINATOR ',' MATCH (citing_paper:Paper {id: line.citing_paper_id}),(cited_paper:Paper {id: line.cited_paper_id}) CREATE (citing_paper)-[:CITES]->(cited_paper)
       ```
