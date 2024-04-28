@@ -36,7 +36,7 @@ This project is a Python-based desktop application designed to search and analyz
 - **python-dotenv (for managing environment variables)**
 
 
-## Installation
+## Installation and Setup
 
 1. **Clone the repository:**
 
@@ -55,11 +55,27 @@ This project is a Python-based desktop application designed to search and analyz
     ```bash
        pip install pyqt5 neo4j python-dotenv
     ```
+
+4. **Instructions for moving csv files to the import directory within your Neo4j installation directory:**
+   - Locate your Neo4j installation directory.
+   - Inside the Neo4j installation directory, find the import folder.
+   - Copy or move the cora_content.csv file from your downloads folder to the import folder.
+     
+   - **Make sure to move the `cora_content.csv` and `cora_cites.csv` files to the `import directory` within your `Neo4j installation directory`.**
+   - **Additionally, ensure that Neo4j has read permissions for the file and that the file is correctly formatted for CSV import.**
+
+5. **Set up the Neo4j database with the following commands:**
+   - In Neo4j Browser, write and execute following Cypher queries to load the CSV file into the database.
    
-4. **Set up the Neo4j database with the following commands:**
+   - **Make sure to adjust the file path in the LOAD CSV query to match the location of your CSV file within the Neo4j import directory.**
+   
    - **Load data for research paper:**
    - a. **Load the nodes:**
 
+      ```sql
+         LOAD CSV WITH HEADERS FROM 'file:///cora_content.csv' AS line FIELDTERMINATOR ',' CREATE (:Paper {id: line.paper_id, class: line.label})
+      ```
+                   OR
       ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_content.csv' AS line FIELDTERMINATOR ',' CREATE (:Paper {id: line.paper_id, class: line.label})
       ```
@@ -67,8 +83,15 @@ This project is a Python-based desktop application designed to search and analyz
    - b. **Load the relationships:**
 
       ```sql
+         LOAD CSV WITH HEADERS FROM 'file:///cora_cites.csv' AS line FIELDTERMINATOR ','  MATCH (citing_paper:Paper {id: line.citing_paper_id}), (cited_paper:Paper {id: line.cited_paper_id}) CREATE (citing_paper)-[:CITES]->(cited_paper)
+      ```
+                  OR     
+      ```sql
          LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/ngshya/datasets/master/cora/cora_cites.csv' AS line FIELDTERMINATOR ',' MATCH (citing_paper:Paper {id: line.citing_paper_id}),(cited_paper:Paper {id: line.cited_paper_id}) CREATE (citing_paper)-[:CITES]->(cited_paper)
       ```
+
+   - **These commands allow users to load CSV files into Neo4j using either a local file path (`file:///`) or a remote URL.**
+
 
 ## Usage
 
